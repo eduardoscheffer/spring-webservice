@@ -24,7 +24,7 @@ public class User implements Serializable {
     private String phone;
     private String password;
 
-    @JsonIgnore // usado pra fazer o lazy loading, pois é uma associacao para muitos (n);
+    @JsonIgnore // usado pra fazer o lazy loading, pois é uma associacao para muitos (n); -> na sereliziação para JSON não vai levar junto a lista de orders
     @OneToMany(mappedBy = "client") // associacao 1 pra n. mapppedBy = nome da associação do outro lado (outra tabela);
     private List<Order> orders = new ArrayList<>();
 
