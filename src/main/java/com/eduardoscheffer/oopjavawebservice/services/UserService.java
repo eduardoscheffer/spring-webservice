@@ -1,7 +1,7 @@
 package com.eduardoscheffer.oopjavawebservice.services;
 
 import com.eduardoscheffer.oopjavawebservice.entities.User;
-import com.eduardoscheffer.oopjavawebservice.repositories.UserRespository;
+import com.eduardoscheffer.oopjavawebservice.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.Optional;
 public class UserService {
 
     @Autowired
-    private UserRespository repository;
+    private UserRepository repository;
 
     public List<User> findAll () {
         return repository.findAll();
