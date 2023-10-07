@@ -1,7 +1,7 @@
 package com.eduardoscheffer.oopjavawebservice.controllers;
 
-import com.eduardoscheffer.oopjavawebservice.entities.Category;
-import com.eduardoscheffer.oopjavawebservice.services.CategoryService;
+import com.eduardoscheffer.oopjavawebservice.entities.Product;
+import com.eduardoscheffer.oopjavawebservice.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,23 +13,23 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/categories")
-public class CategoryController {
+@RequestMapping("/products")
+public class ProductController {
     @Autowired
-    private CategoryService service;
+    private ProductService service;
 
     @GetMapping
-    public ResponseEntity<List<Category>> findAll() {
+    public ResponseEntity<List<Product>> findAll() {
 
-        List<Category> list = service.findAll();
+        List<Product> list = service.findAll();
         return new ResponseEntity<>(list, HttpStatus.OK);
 
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Category> findById(@PathVariable Long id) {
-        Category Category = service.findById(id);
-        return new ResponseEntity<>(Category, HttpStatus.OK);
+    public ResponseEntity<Product> findById(@PathVariable Long id) {
+        Product Product = service.findById(id);
+        return new ResponseEntity<>(Product, HttpStatus.OK);
     }
 
 

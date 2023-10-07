@@ -2,10 +2,12 @@ package com.eduardoscheffer.oopjavawebservice.config;
 
 import com.eduardoscheffer.oopjavawebservice.entities.Category;
 import com.eduardoscheffer.oopjavawebservice.entities.Order;
+import com.eduardoscheffer.oopjavawebservice.entities.Product;
 import com.eduardoscheffer.oopjavawebservice.entities.User;
 import com.eduardoscheffer.oopjavawebservice.entities.enums.OrderStatus;
 import com.eduardoscheffer.oopjavawebservice.repositories.CategoryRepository;
 import com.eduardoscheffer.oopjavawebservice.repositories.OrderRepository;
+import com.eduardoscheffer.oopjavawebservice.repositories.ProductRepository;
 import com.eduardoscheffer.oopjavawebservice.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -28,6 +30,9 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private ProductRepository productRepository;
+
 
     @Override
     public void run(String... args) throws Exception { // metodo do CommandLineRunner que tudo que estiver aqui vai ser executado quando a aplicacao for iniciada
@@ -45,6 +50,13 @@ public class TestConfig implements CommandLineRunner {
         Order o2 = new Order(null, Instant.parse("2019-07-21T03:42:10Z"), u2, OrderStatus.WAITING_PAYMENT);
         Order o3 = new Order(null, Instant.parse("2019-07-22T15:21:22Z"), u1, OrderStatus.WAITING_PAYMENT);
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+
+        Product p1 = new Product(null, "The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, "");
+        Product p2 = new Product(null, "Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, "");
+        Product p3 = new Product(null, "Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, "");
+        Product p4 = new Product(null, "PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
+        Product p5 = new Product(null, "Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
+        productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 
     }
 }
