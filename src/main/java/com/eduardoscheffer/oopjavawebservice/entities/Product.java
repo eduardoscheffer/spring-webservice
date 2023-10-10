@@ -24,7 +24,9 @@ public class Product implements Serializable {
     private String imgUrl;
 
     @Setter(value = AccessLevel.NONE)
-    @Transient
+    @ManyToMany
+    // O atributo joinColumns indica a chave estrangeira da entidade Product, e inverseJoinColumns indica a chave estrangeira da entidade Category:
+    @JoinTable(name = "tb_product_category", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "category_id")) // assossiacao N pra N
     private Set<Category> categories = new HashSet<>(); // Set para o Produto não ser de mais de uma categoria diferente
 
     public Product(Long id, String name, String description, Double price, String imgUrl) {
