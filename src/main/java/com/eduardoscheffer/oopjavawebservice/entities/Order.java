@@ -7,6 +7,8 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,4 +33,14 @@ public class Order implements Serializable {
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
+    @Setter(value = AccessLevel.NONE)
+    @OneToMany(mappedBy = "id.order") // assosiacao 1 pra n com OrderItem
+    private Set<OrderItem> items = new HashSet<>();
+
+    public Order(Long id, Instant moment, User client, OrderStatus orderStatus) {
+        this.id = id;
+        this.moment = moment;
+        this.client = client;
+        this.orderStatus = orderStatus;
+    }
 }
