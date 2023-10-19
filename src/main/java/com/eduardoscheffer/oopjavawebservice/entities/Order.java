@@ -37,6 +37,9 @@ public class Order implements Serializable {
     @OneToMany(mappedBy = "id.order") // assosiacao 1 pra n com OrderItem
     private Set<OrderItem> items = new HashSet<>();
 
+    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL) // mapeando as duas entidades para ter o mesmo id
+    private Payment payment;
+
     public Order(Long id, Instant moment, User client, OrderStatus orderStatus) {
         this.id = id;
         this.moment = moment;
