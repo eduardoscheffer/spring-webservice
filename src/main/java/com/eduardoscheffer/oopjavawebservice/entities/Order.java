@@ -40,6 +40,14 @@ public class Order implements Serializable {
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL) // mapeando as duas entidades para ter o mesmo id
     private Payment payment;
 
+    public Double getTotal() {
+        double total = 0.0;
+        for (OrderItem orderItem : items) {
+            total += orderItem.getSubTotal();
+        }
+        return total;
+    }
+
     public Order(Long id, Instant moment, User client, OrderStatus orderStatus) {
         this.id = id;
         this.moment = moment;

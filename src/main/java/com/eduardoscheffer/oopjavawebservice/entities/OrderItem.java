@@ -67,6 +67,10 @@ public class OrderItem implements Serializable {
         this.price = price;
     }
 
+    public Double getSubTotal() { // se coloca o "getSubTotal" porque na plataforma java o que vale é a palavra GET para aparecer no Json
+        return price * quantity;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
