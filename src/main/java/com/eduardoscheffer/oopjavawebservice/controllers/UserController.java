@@ -25,20 +25,28 @@ public class UserController {
 
     @GetMapping("{id}")
     public ResponseEntity<User> findById(@PathVariable Long id) {
-        User user = service.findById(id);
+        User user = service.findUserById(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     @PostMapping
     public ResponseEntity<User> insertUser(@RequestBody User user) {
-        user = service.insert(user);
+        user = service.insertUser(user);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        service.delete(id);
+        service.deleteUser(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity updateUser(@PathVariable Long id, @RequestBody User user) {
+        var userUpdated = service.updateUser(id, user);
+        if (userUpdated != null) return new ResponseEntity<>(userUpdated, HttpStatus.OK);
+        else return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falha na atualização do Usuario");
+
     }
 
 }
