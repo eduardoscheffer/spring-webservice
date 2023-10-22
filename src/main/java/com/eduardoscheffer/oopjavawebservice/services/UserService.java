@@ -4,6 +4,7 @@ import com.eduardoscheffer.oopjavawebservice.entities.User;
 import com.eduardoscheffer.oopjavawebservice.exceptions.DatabaseException;
 import com.eduardoscheffer.oopjavawebservice.exceptions.ResourceNotFoundException;
 import com.eduardoscheffer.oopjavawebservice.repositories.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -43,12 +44,19 @@ public class UserService {
 
     @Transactional
     public User updateUser(Long id, User user) {
-        return repository.findById(id).map(existingUser -> {
-            existingUser.setName(user.getName());
-            existingUser.setEmail(user.getEmail());
-            existingUser.setPhone(user.getPhone());
-            return existingUser;
-        }).orElse(null);
+
+        if (!repository.existsById(id)) throw new ResourceNotFoundException(id); // se nao existir o User na DB lanca uma excecao peronalizada
+
+        try {
+            return repository.findById(id).map(existingUser -> {
+                existingUser.setName(user.getName());
+                existingUser.setEmail(user.getEmail());
+                existingUser.setPhone(user.getPhone());
+                return existingUser;
+            }).orElse(null);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException(id);
+        }
     }
 
 }
