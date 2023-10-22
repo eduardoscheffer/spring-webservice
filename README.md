@@ -1,19 +1,30 @@
 # Spring Web Service
 
-Este é um projeto de exemplo que demonstra a criação de um serviço da web usando o framework Spring.
+Este é um projeto de exemplo que demonstra a criação de um serviço da web usando o framework Spring e Maven como gerenciador de dependências.
 
 ## Descrição do Projeto
 
 Este projeto foi desenvolvido com o objetivo de demonstrar como criar um serviço da web simples usando o Spring Framework. Ele inclui um conjunto de recursos e endpoints de amostra que podem ser usados como ponto de partida para criar seu próprio serviço da web.
 
-## Funcionalidades
+## Domain model
 
-- Endpoint 1: Descreva a funcionalidade do primeiro endpoint.
-- Endpoint 2: Descreva a funcionalidade do segundo endpoint.
+<div style ="display: inline">
+  
+</div>
+
+## Domain instance
+
+<div style ="display: inline">
+  
+</div>
+
 
 ## Tecnologias utilizadas
 <div style ="display: inline">
   <img width ='70' height ='70' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg"/>
+  <img width ='70' height ='70' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"/>
+  <img width ='70' height ='70' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain-wordmark.svg"/>
+  <img width ='70' height ='70' src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tomcat/tomcat-original.svg"/>
 </div>
 
 ## Pré-requisitos
