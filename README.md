@@ -9,13 +9,13 @@ Este projeto foi desenvolvido com o objetivo de demonstrar como criar um serviç
 ## Domain model
 
 <div style ="display: inline">
-  
+  ![domain-model](https://github.com/eduardoscheffer/spring-webservice/assets/107814795/6cbc5bc7-ebeb-4326-a184-606b3df7d73f)
 </div>
 
 ## Domain instance
 
 <div style ="display: inline">
-  
+  ![domain-instance](https://github.com/eduardoscheffer/spring-webservice/assets/107814795/1983c2f7-18d2-4fc1-9fc8-e35c526e69cc)
 </div>
 
 
