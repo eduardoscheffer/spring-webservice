@@ -59,4 +59,9 @@ public class UserService {
         }
     }
 
+    @Transactional
+    public List<User> findByName (String name) {
+        return repository.findByNameContainingIgnoreCase(name);
+    }
+
 }

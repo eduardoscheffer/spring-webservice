@@ -1,5 +1,6 @@
 package com.eduardoscheffer.oopjavawebservice.controllers;
 
+import com.eduardoscheffer.oopjavawebservice.controllers.utils.URL;
 import com.eduardoscheffer.oopjavawebservice.entities.User;
 import com.eduardoscheffer.oopjavawebservice.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,13 @@ public class UserController {
         if (userUpdated != null) return new ResponseEntity<>(userUpdated, HttpStatus.OK);
         else return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Falha na atualização do Usuario");
 
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<User>> finUsersByName(@RequestParam(value = "name", defaultValue = "") String name) {
+        name = URL.decodeParam(name);
+        List<User> users = service.findByName(name);
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
 }
