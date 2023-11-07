@@ -2,6 +2,13 @@
 
 Este é um projeto de exemplo que demonstra a criação de um serviço da web usando o framework Spring e Maven como gerenciador de dependências.
 
+## Documentação
+
+Utilizei Swagger da springdoc-openapi para documentar a API. Endereço da documentação pode ser encontrado em:
+```bash
+localhost:8080/swagger-ui.html
+````
+
 ## Descrição do Projeto
 
 Este projeto foi desenvolvido com o objetivo de demonstrar como criar um serviço da web simples usando o Spring Framework. Ele inclui um conjunto de recursos e endpoints de amostra que podem ser usados como ponto de partida para criar seu próprio serviço da web.
