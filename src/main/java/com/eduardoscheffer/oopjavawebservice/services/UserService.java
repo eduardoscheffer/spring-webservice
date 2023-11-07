@@ -1,5 +1,6 @@
 package com.eduardoscheffer.oopjavawebservice.services;
 
+import com.eduardoscheffer.oopjavawebservice.controllers.utils.URL;
 import com.eduardoscheffer.oopjavawebservice.entities.User;
 import com.eduardoscheffer.oopjavawebservice.exceptions.DatabaseException;
 import com.eduardoscheffer.oopjavawebservice.exceptions.ResourceNotFoundException;
@@ -7,7 +8,9 @@ import com.eduardoscheffer.oopjavawebservice.repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,12 +19,16 @@ import java.util.Optional;
 
 @Service
 public class UserService {
-
+    public UserService() {
+        this.passwordEncoder = new BCryptPasswordEncoder();
+    }
     @Autowired
     private UserRepository repository;
 
+    private final PasswordEncoder passwordEncoder;
+
     public List<User> findAll () {
-        return repository.findAll();
+        return repository.findAll(Sort.by(Sort.Direction.ASC, "name")); // retorna uma lista ordenada por nome (ordem alfabética) usando Sort.by do Spring Data
     }
 
     public User findUserById(Long id) {
@@ -30,6 +37,8 @@ public class UserService {
     }
 
     public User insertUser(User user) {
+
+        user.setPassword(passwordEncoder.encode(user.getPassword())); // criptografia da senha
         return repository.save(user);
     }
 
@@ -49,10 +58,8 @@ public class UserService {
 
         try {
             return repository.findById(id).map(existingUser -> {
-                existingUser.setName(user.getName());
-                existingUser.setEmail(user.getEmail());
-                existingUser.setPhone(user.getPhone());
-                return existingUser;
+                URL.copyNonNullProperties(user, existingUser);
+                return insertUser(existingUser);
             }).orElse(null);
         } catch (EntityNotFoundException e) {
             throw new ResourceNotFoundException(id);
