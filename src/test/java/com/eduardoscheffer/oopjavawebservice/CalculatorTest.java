@@ -1,12 +1,11 @@
 package com.eduardoscheffer.oopjavawebservice;
 
-import com.eduardoscheffer.oopjavawebservice.controllers.utils.Calculator;
+import com.eduardoscheffer.oopjavawebservice.utils.Calculator;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.springframework.util.Assert;
 
 import static org.junit.jupiter.api.Assertions.*;
 

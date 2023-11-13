@@ -1,6 +1,6 @@
 package com.eduardoscheffer.oopjavawebservice.services;
 
-import com.eduardoscheffer.oopjavawebservice.controllers.utils.URL;
+import com.eduardoscheffer.oopjavawebservice.utils.URL;
 import com.eduardoscheffer.oopjavawebservice.entities.User;
 import com.eduardoscheffer.oopjavawebservice.exceptions.DatabaseException;
 import com.eduardoscheffer.oopjavawebservice.exceptions.ResourceNotFoundException;

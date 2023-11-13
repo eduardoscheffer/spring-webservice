@@ -1,4 +1,4 @@
-package com.eduardoscheffer.oopjavawebservice.controllers.utils;
+package com.eduardoscheffer.oopjavawebservice.utils;
 
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
